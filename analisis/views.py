@@ -7,3 +7,5 @@ from .utils.visualizacion import main
 def visualizar_dataset(request):
     data = main()  # main() devuelve tu dataset en JSON
     return Response(data)
+from django.http import JsonResponse
+
