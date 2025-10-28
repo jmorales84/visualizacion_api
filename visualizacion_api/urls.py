@@ -27,7 +27,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('analisis.urls')),  # Incluye las rutas de tu app
-    
+    path('', redirect_root),
 ]
 
 
