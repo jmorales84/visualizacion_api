@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: visualizacion-api
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn visualizacion_api.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: visualizacion_api.settings
+      - key: PYTHON_VERSION
+        value: 3.11
