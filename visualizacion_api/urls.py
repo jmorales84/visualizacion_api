@@ -22,12 +22,22 @@ Including another URLconf
 #]
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from django.shortcuts import redirect
+from visualizacion_api.views import visualizar_dataset
+
+# Función que redirige la raíz '/'
+def redirect_root(request):
+    # Redirige a la API de visualización
+    return redirect('visualizar_dataset')
+    # O, si quieres al front-end:
+    # return redirect('https://tu-front-end-url.com')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('analisis.urls')),  # Incluye las rutas de tu app
-    path('', redirect_root),
+    path('api/visualizar/', visualizar_dataset, name='visualizar_dataset'),
+    path('', redirect_root),  # <- usar la función definida arriba
 ]
+
 
 
